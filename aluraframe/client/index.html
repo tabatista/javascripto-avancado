@@ -11,7 +11,7 @@
     
     <h1 class="text-center">Negociações</h1>
     
-    <form class="form">
+    <form class="form" onsubmit="negociacaoController.adicionar(event)">
         
         <div class="form-group">
             <label for="data">Data</label>
@@ -59,6 +59,7 @@
         </tfoot>
     </table>
     <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
     <script>
         //o let existe dentro do escopo de bloco {} - dentro de um for, por exemplo - como acontece no java
         //o var nao... 
@@ -66,6 +67,9 @@
         let volume = n1.volume; //acessa o metodo get sem o () - ele interpreta implicitamente 
         console.log(volume);
         console.log(Object.isFrozen(n1));
+
+        //-----------------------
+        let negociacaoController = new NegociacaoController();
     </script>
 </body>
 </html>
