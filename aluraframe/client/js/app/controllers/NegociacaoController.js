@@ -41,5 +41,15 @@ class NegociacaoController {
 
         console.log(negociacao);
 
+        /*DICA
+
+        Quando a arrow function possui apenas um parâmetro, podemos remover os parênteses. Vejamos como fica o código anterior:
+
+        let aprovados = avaliacoes
+            .filter(prova => prova.nota >= 7)
+            .map(prova => prova.aluno.nome);
+         * 
+         */
+
     }
 }
