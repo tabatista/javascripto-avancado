@@ -1,19 +1,17 @@
 class ListaNegociacoes {
 
-    constructor(contexto, armadilha) {
+    constructor(armadilha) {
         this._negociacoes = [];
         this._armadilha = armadilha;
-        this._contexto = contexto;
     }
 
     adicionar(negociacao) {
         this._negociacoes.push(negociacao);
         //para usarmos o contexto do controller para invocar o update do view
-        //como se fosse assim contexto._armadilha(this);
         //o terceiro parametro diz respeito aos parametros (por um array) 
         //que a funcao da armadilha vai receber
         //nesse caso a propria classe lista de negociacoes
-        Reflect.apply(this._armadilha, this._contexto, [this]);
+        this._armadilha(this);
     }
     
     get negociacoes() {
@@ -24,7 +22,7 @@ class ListaNegociacoes {
     
     esvaziar() {
         this._negociacoes = [];
-        Reflect.apply(this._armadilha, this._contexto, [this]);
+        this._armadilha(this);
     }
 
 }

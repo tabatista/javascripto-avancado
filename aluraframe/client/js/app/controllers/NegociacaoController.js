@@ -13,9 +13,10 @@ class NegociacaoController {
 
         this._formulario = $('.form');
 
-        this._listaNegociacoes = new ListaNegociacoes(this, function (model) {
-            this._negociacoesView.update(model);
-        });
+        //o escopo do this de uma arrow function eh lexico
+        //nao eh dinamico como o espoco de uma funcao que muda de acordo com o contexto
+        //isso significa que o "this" para o update/armadilha dentro da lista sera o controller
+        this._listaNegociacoes = new ListaNegociacoes(model => this._negociacoesView.update(model));
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
         this._negociacoesView.update(this._listaNegociacoes);
 
