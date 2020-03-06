@@ -12,6 +12,8 @@ class ListaNegociacoes {
         //que a funcao da armadilha vai receber
         //nesse caso a propria classe lista de negociacoes
         this._armadilha(this);
+
+        //dica de como usar algum metodo com o: Reflect.apply(Aviao.prototype.voa, this, [])
     }
     
     get negociacoes() {
