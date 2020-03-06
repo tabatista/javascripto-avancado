@@ -1,12 +1,12 @@
-class NegociacoesView {
+class NegociacoesView extends View {
 
     constructor(elemento) {
-        this._elemento = elemento;
+        super(elemento);
     }
 
-    _template(model){
+    template(model) {
 
-    return `
+        return `
     <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
@@ -18,8 +18,8 @@ class NegociacoesView {
                 </thead>
 
                 <tbody>
-                ${model.negociacoes.map(n => 
-                   `
+                ${model.negociacoes.map(n =>
+            `
                     <tr>
                         <td>${DataHelper.dataParaTexto(n.data)}</td>
                         <td>${n.quantidade}</td>
@@ -27,32 +27,28 @@ class NegociacoesView {
                         <td>${n.volume}</td>
                     </tr>
                   `
-                  ).join('')}
+        ).join('')}
             </tbody>
             <tfoot>
                     <td colspan="3"><td>
                     <td>${
-                        model.negociacoes.reduce((total, elemento) => total + elemento.volume, 0.0)
-                    }</td>
+            model.negociacoes.reduce((total, elemento) => total + elemento.volume, 0.0)
+            }</td>
             </tfoot>
          </table>
         `;
-      }
+    }
 
-      /*
-       * Forma de percorrer o totlal acima com uma funcao autoretornavel
+    /*
+     * Forma de percorrer o totlal acima com uma funcao autoretornavel
 
-            (function(){
-               let total = 0;
-               model.negociacoes.forEach(n => total+= n.volume);
-               return total;
-            )()
-       * 
-       */
+          (function(){
+             let total = 0;
+             model.negociacoes.forEach(n => total+= n.volume);
+             return total;
+          )()
+     * 
+     */
 
-//coloca o template no DOM como elemento, apos converter a string
-update(model) {
-    this._elemento.innerHTML = this._template(model);
-}
 
 }
