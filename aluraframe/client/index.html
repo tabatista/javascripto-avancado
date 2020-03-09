@@ -67,5 +67,25 @@
         //-----------------------
         let negociacaoController = new NegociacaoController();
     </script>
+
+    <script>
+        //o get eh chamado toda vez que ler alguma propriedade do objeto
+        //o get eh uma "trap" = armadilha
+        let negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
+
+            //target eh o objeto original, nesse caso a negociacao
+            //property eh a propriedade acessada
+            //receiver eh a referencia para o proprio proxy
+            get: function (target, property, receiver){
+                console.log(`A propriedade "${property}" foi interceptada`);
+
+                //necessario informar qual valor retornado apos interceptar
+                return Reflect.get(target, property, receiver);
+            }
+        });
+
+        console.log(negociacao.quantidade);
+        console.log(negociacao.valor);
+    </script>
 </body>
 </html>
