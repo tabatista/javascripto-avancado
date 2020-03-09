@@ -69,23 +69,25 @@
     </script>
 
     <script>
-        //o get eh chamado toda vez que ler alguma propriedade do objeto
-        //o get eh uma "trap" = armadilha
+        //o set eh chamado toda vez que algum metodo do objeto for invocado
+        //o set eh uma "trap" = armadilha
         let negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
 
             //target eh o objeto original, nesse caso a negociacao
-            //property eh a propriedade acessada
+            //property eh a propriedade alterada
+            //value eh o valor que sera atribuido a propriedade
             //receiver eh a referencia para o proprio proxy
-            get: function (target, property, receiver){
-                console.log(`A propriedade "${property}" foi interceptada`);
+            set: function (target, property, value, receiver){
+
+                console.log(`Valor anterior ${target[property]}, novo valor ${value}`)
 
                 //necessario informar qual valor retornado apos interceptar
-                return Reflect.get(target, property, receiver);
+                return Reflect.set(target, property, value, receiver);
             }
         });
 
-        console.log(negociacao.quantidade);
-        console.log(negociacao.valor);
+        negociacao._quantidade = 10
+        negociacao._valor = 20;
     </script>
 </body>
 </html>
