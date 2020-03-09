@@ -15,47 +15,31 @@ class NegociacaoController {
 
         /*
         //o escopo do this de uma arrow function eh lexico
-        //nao eh dinamico como o espoco de uma funcao que muda de acordo com o contexto
+        //nao eh dinamico como o escopo de uma funcao que muda de acordo com o contexto
         //isso significa que o "this" para o update/armadilha dentro da lista sera o controller
         this._listaNegociacoes = new ListaNegociacoes(model => this._negociacoesView.update(model));
         */
 
-        let self = this;
-        this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
-
-            get(target, prop, receiver) {
-
-                if (['adicionar', 'esvaziar'].includes(prop) && typeof (target[prop] == typeof (Fuction))) {
-
-                    return function () {
-                        Reflect.apply(target[prop], target, arguments);
-                        self._negociacoesView.update(target);
-                    }
-                }
-
-                return Reflect.get(target, prop, receiver);
-            }
-        });
+        this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), 
+        ['adicionar', 'esvaziar'], 
+        model => this._negociacoesView.update(model)
+        );
 
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
         this._negociacoesView.update(this._listaNegociacoes);
 
-
-
-
-        this._mensagem = new Mensagem();
+        this._mensagem = ProxyFactory.create(new Mensagem(), 
+        ['texto'], 
+        model => this._mensagemView.update(model)
+        );
         this._mensagemView = new MensagemView($('#mensagemView'));
         this._mensagemView.update(this._mensagem);
     }
 
     adicionar(event) {
         event.preventDefault();
-
         this._listaNegociacoes.adicionar(this._criarNegociacao());
-
         this._mensagem.texto = 'Negociação adicionada com sucesso!';
-        this._mensagemView.update(this._mensagem);
-
         this._limpaFormulario();
 
         console.log(this._listaNegociacoes);
@@ -65,7 +49,6 @@ class NegociacaoController {
     apagar() {
         this._listaNegociacoes.esvaziar();
         this._mensagem.texto = "Negociações apagada com sucesso!";
-        this._mensagemView.update(this._mensagem);
     }
 
     _criarNegociacao() {
