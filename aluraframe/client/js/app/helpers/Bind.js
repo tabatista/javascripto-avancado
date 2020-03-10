@@ -1,7 +1,8 @@
 class Bind {
 
-
-    constructor(model, view, props){
+    //rest operator com os 3 pontinhos para receber varios parametros ao inves de um array explicto na chamada do Bind
+    //deve ser sempre o ultimo parametro
+    constructor(model, view, ...props){
         let proxy = ProxyFactory.create(model, props, 
         model => view.update(model)
         );
