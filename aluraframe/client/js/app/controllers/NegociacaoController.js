@@ -38,39 +38,30 @@ class NegociacaoController {
     importarNegociacoes() {
         let service = new NegociacaoService();
 
-        //usando o callback para receber as negociacoes
-        //quando a tarefa for executada
-        service.obterNegociacoesDaSemana((erro, negociacoes) => {
-
-            //programacao assincrona: Error-First-Callback - erro no primeiro parametro, resultado no segundo
-            if (erro) {
-                this._mensagem.texto = erro;
-                return;
-            }
-
+        //a promise da a sensacao que eh um metodo sincrono quando na vdd eh assincrono
+        //sendo o resultado futuro de uma operacao
+        service.obterNegociacoesDaSemana() //chamamos o metodo sem passar o callback
+        .then(negociacoes => { //se a promessa estiver cumprida, entao...
             negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+            this._mensagem.texto = 'Negociacao da semana obtida com sucesso';
+        })
+        .catch(erro =>  this._mensagem.texto = erro);
+        //catch para o parametro de erro
 
-            service.obterNegociacoesDaSemanaAnterior((erro, negociacoes) => {
-                if (erro) {
-                    this._mensagem.texto = erro;
-                    return;
-                }
-
-                negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
-
-                service.obterNegociacoesDaSemanaRetrasada((erro, negociacoes) => {
-                    if (erro) {
-                        this._mensagem.texto = erro;
-                        return;
-                    }
-
-                    negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
-                });
-
-                this._mensagem.texto = 'Negociacoes importadas com sucesso';
-            });
-
-        });
+        service.obterNegociacoesDaSemanaAnterior() 
+        .then(negociacoes => { 
+            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+            this._mensagem.texto = 'Negociacao da semana anterior obtida com sucesso';
+        })
+        .catch(erro =>  this._mensagem.texto = erro);
+        
+        service.obterNegociacoesDaSemanaRetrasada() 
+        .then(negociacoes => { 
+            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+            this._mensagem.texto = 'Negociacao da semana retrasada obtida com sucesso';
+        })
+        .catch(erro =>  this._mensagem.texto = erro);
+       
     }
 
     apagar() {
