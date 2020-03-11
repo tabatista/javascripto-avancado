@@ -38,30 +38,21 @@ class NegociacaoController {
     importarNegociacoes() {
         let service = new NegociacaoService();
 
-        //a promise da a sensacao que eh um metodo sincrono quando na vdd eh assincrono
-        //sendo o resultado futuro de uma operacao
-        service.obterNegociacoesDaSemana() //chamamos o metodo sem passar o callback
-        .then(negociacoes => { //se a promessa estiver cumprida, entao...
-            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
-            this._mensagem.texto = 'Negociacao da semana obtida com sucesso';
+        //resolve a ordem de execucao apos todas promessas cumpridas (em um array)
+        // e o erro de todas eh tratado num lugar so
+        Promise.all([service.obterNegociacoesDaSemana(),
+            service.obterNegociacoesDaSemanaAnterior(),
+            service.obterNegociacoesDaSemanaRetrasada()]
+        ).then(negociacoes => {
+            //as negociacoes acima eh um array com 3 arrays dentro
+            //achatamos todos os itens dos arrays em um array so, que eh o arrayAchatado
+            //assim podemos percorrer esse array com o foreach para adicionar na lista de negociacoes
+            negociacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
+            .forEach(negociacao => {
+                this._listaNegociacoes.adicionar(negociacao);
+            });
         })
-        .catch(erro =>  this._mensagem.texto = erro);
-        //catch para o parametro de erro
-
-        service.obterNegociacoesDaSemanaAnterior() 
-        .then(negociacoes => { 
-            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
-            this._mensagem.texto = 'Negociacao da semana anterior obtida com sucesso';
-        })
-        .catch(erro =>  this._mensagem.texto = erro);
-        
-        service.obterNegociacoesDaSemanaRetrasada() 
-        .then(negociacoes => { 
-            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
-            this._mensagem.texto = 'Negociacao da semana retrasada obtida com sucesso';
-        })
-        .catch(erro =>  this._mensagem.texto = erro);
-       
+            .catch(erro => this._mensagem.texto = erro);
     }
 
     apagar() {
