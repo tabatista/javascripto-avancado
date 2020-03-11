@@ -43,14 +43,34 @@ class NegociacaoController {
         service.obterNegociacoesDaSemana((erro, negociacoes) => {
 
             //programacao assincrona: Error-First-Callback - erro no primeiro parametro, resultado no segundo
-            if(erro){
+            if (erro) {
                 this._mensagem.texto = erro;
                 return;
             }
 
-            negociacoes.forEach(negociacao =>  this._listaNegociacoes.adicionar(negociacao));
-            this._mensagem.texto = 'Negociacoes importadas com sucesso';
-        })
+            negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+
+            service.obterNegociacoesDaSemanaAnterior((erro, negociacoes) => {
+                if (erro) {
+                    this._mensagem.texto = erro;
+                    return;
+                }
+
+                negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+
+                service.obterNegociacoesDaSemanaRetrasada((erro, negociacoes) => {
+                    if (erro) {
+                        this._mensagem.texto = erro;
+                        return;
+                    }
+
+                    negociacoes.forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+                });
+
+                this._mensagem.texto = 'Negociacoes importadas com sucesso';
+            });
+
+        });
     }
 
     apagar() {
