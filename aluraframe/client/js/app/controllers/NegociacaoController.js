@@ -37,22 +37,16 @@ class NegociacaoController {
 
     importarNegociacoes() {
         let service = new NegociacaoService();
+        let negociacoesPromise = service.obterNegociacoes();
 
-        //resolve a ordem de execucao apos todas promessas cumpridas (em um array)
-        // e o erro de todas eh tratado num lugar so
-        Promise.all([service.obterNegociacoesDaSemana(),
-            service.obterNegociacoesDaSemanaAnterior(),
-            service.obterNegociacoesDaSemanaRetrasada()]
-        ).then(negociacoes => {
-            //as negociacoes acima eh um array com 3 arrays dentro
-            //achatamos todos os itens dos arrays em um array so, que eh o arrayAchatado
-            //assim podemos percorrer esse array com o foreach para adicionar na lista de negociacoes
-            negociacoes.reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
-            .forEach(negociacao => {
-                this._listaNegociacoes.adicionar(negociacao);
-            });
-        })
-            .catch(erro => this._mensagem.texto = erro);
+        negociacoesPromise
+            .then(negociacoes => {
+
+                negociacoes.forEach(negociacao => {
+                    this._listaNegociacoes.adicionar(negociacao);
+                });
+            })
+            .catch(error => this._mensagem.texto = erro);
     }
 
     apagar() {
