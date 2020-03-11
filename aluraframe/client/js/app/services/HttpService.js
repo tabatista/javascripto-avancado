@@ -64,13 +64,14 @@ class HttpService {
 
                         resolve(JSON.parse(xhr.responseText));
                     } else {
-
+                        console.log(xhr.status);
                         reject(xhr.responseText);
                     }
                 }
             };
             // usando JSON.stringifly para converter objeto em uma string no formato JSON.
             xhr.send(JSON.stringify(dado));
+            //HTTP é um protocolo textual, não podemos enviar um objeto JavaScript diretamente
         });
 
     }
