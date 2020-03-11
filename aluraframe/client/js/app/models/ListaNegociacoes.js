@@ -23,4 +23,12 @@ class ListaNegociacoes {
         return this._negociacoes.reduce((total, elemento) => total + elemento.volume, 0.0);
     }
 
+    ordenar(criterio) {
+        this._negociacoes.sort(criterio);        
+    }
+
+    inverterOrdem() {
+        this._negociacoes.reverse();
+    }
+
 }

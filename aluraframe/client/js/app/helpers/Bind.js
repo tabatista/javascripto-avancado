@@ -1,3 +1,4 @@
+//data binding (associação de dados) entre o model e view
 class Bind {
 
     //rest operator com os 3 pontinhos para receber varios parametros ao inves de um array explicto na chamada do Bind
