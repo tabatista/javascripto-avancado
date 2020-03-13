@@ -51,4 +51,20 @@ class NegociacaoDAO {
             };
         });
     }
+
+    apagarTodos() {
+        return new Promise((resolve, reject) => {
+
+            let request = this._connection
+                .transaction([this._store], 'readwrite')
+                .objectStore(this._store)
+                .clear();
+
+            request.onsuccess = e => resolve('Negociacoes removidas com sucesso');
+            request.onerror = e => {
+                console.log(e.target.error);
+                reject('Nao foi possivel apagar as negociacoes');
+            };
+        });
+    }
 }
