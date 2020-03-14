@@ -62,6 +62,9 @@ class NegociacaoController {
         let negociacoesPromise = service.obterNegociacoes();
 
         negociacoesPromise
+            .then(negociacoes => 
+                negociacoes.filter(negociacao =>
+                     this._listaNegociacoes.negociacoes.indexOf(negociacao) == -1)) //verifica se existe
             .then(negociacoes => {
 
                 negociacoes.forEach(negociacao => {
