@@ -58,13 +58,30 @@ class NegociacaoController {
     }
 
     importarNegociacoes() {
+
+        /*
+        Todo array possui a funcao some(), com ela identificamos se o item buscado faz parte da lista
+        varrendo cada um deles de forma semelhante a um forEach()
+
+        A funcao some() vai varrer cada item da lista verificando se os elementos sao iguais ao criterio estabelecido.
+        Enquanto o item for diferente, ele seguirag para o proximo. Quando o elemento for equivalente ao criterio b
+        letras (array) retornarah true e não seguirah iterando no array ate o fim. 
+        Basta encontrar um item que seja correspondente ao criterio para que o retorno de some() seja "verdadeiro".
+
+        No entanto, quando buscamos uma letra que nao existe, por exemplo, a letra e, o retorno serah "falso".
+        */
+
         let service = new NegociacaoService();
         let negociacoesPromise = service.obterNegociacoes();
 
         negociacoesPromise
-            .then(negociacoes => 
+            .then(negociacoes =>
+                //verifica se nao existe para retornar e adicionar na lista
                 negociacoes.filter(negociacao =>
-                     this._listaNegociacoes.negociacoes.indexOf(negociacao) == -1)) //verifica se existe
+                    !this._listaNegociacoes.negociacoes
+                        //converte o obj em string para comparacao
+                        .some(negociacaoExistente => JSON.stringify(negociacao) == JSON.stringify(negociacaoExistente)))
+            )
             .then(negociacoes => {
 
                 negociacoes.forEach(negociacao => {
