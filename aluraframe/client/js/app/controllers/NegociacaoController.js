@@ -77,6 +77,7 @@ class NegociacaoController {
         negociacoesPromise
             .then(negociacoes =>
                 //verifica se nao existe para retornar e adicionar na lista
+                //O metodo filter() cria um novo array com todos os elementos que passaram no teste implementado pela funcao fornecida.
                 negociacoes.filter(negociacao =>
                     !this._listaNegociacoes.negociacoes
                         //converte o obj em string para comparacao
