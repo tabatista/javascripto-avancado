@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19615 -->
+<html lang="pt-BR" data-product="alura" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+		
+
+
+
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script type="text/javascript" async="" src="./encadeamento_de_promises-promise-all_files/analytics.js.download"></script><script async="" src="./encadeamento_de_promises-promise-all_files/analytics.js.download"></script><script async="" src="./encadeamento_de_promises-promise-all_files/gtm.js.download"></script><script>
+	(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+		{'GTM-TN542JN':true});
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-TN542JN');
+</script>
+<!-- End Google Tag Manager -->
+
+	<script type="text/javascript">
+        dataLayer.push({
+            'tipoPagina': 'Aula',
+            'curso': 'JavaScript: Salvando dados localmente com IndexedDB'
+        });
+	</script>
+
+	
+
+	<title>JavaScript: Aula 4 - Atividade 11 Experimento com promise | Alura - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://cursos.alura.com.br/assets/images/alura/favicon.ico">
+	
+	<link href="./encadeamento_de_promises-promise-all_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/video-js.322ee8c7.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/silvermine-videojs-quality-selector.min.de928d55.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/prettify.4f36b4ca.css">
+
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/base.1e88adda.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/formattedText.afb4622e.css">
+	
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/container.16466c50.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/classPage.686decbe.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/menuSettings.47105043.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskProgress.73b1902d.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskMessageInfo.2f3d3681.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/alternativeList.3b452dc0.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskFeedback.1c82537d.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/markdown.c1e23fdd.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/finishSection.eae45901.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/phrase.416f092b.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/openquestion.c66aa640.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/video.48a68d14.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/singlechoice.4a8caf68.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/music.c02947a9.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/videodialog.80603de3.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/fillintheblank.92f59734.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/speakingpractice.c2461a40.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/pronunciationpractice.790ca935.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/repetition.13eb3517.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/genericVideo.9239c799.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/projectSubmit.e7032445.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskButtons.3fbd6adb.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/markdownEditor.9f06486b.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/audioPlayer.a615784e.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/notes.0c60a7da.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/dark-mode.26653973.css">
+	<link rel="stylesheet" href="./encadeamento_de_promises-promise-all_files/taskFeedbackAnswer.98ef221e.css">
+
+
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+	</style>
+
+	
+	
+	<script async="" src="./encadeamento_de_promises-promise-all_files/hotjar-1638253.js.download"></script><script src="./encadeamento_de_promises-promise-all_files/sha256.min.js.download"></script><script async="" src="./encadeamento_de_promises-promise-all_files/modules.2ae1670a9859c25377f0.js.download" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head>
+<body>
+
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task" data-allow-answer="true" data-task-section-exam="false" data-task-type="multiplechoice" data-task-id="19615" data-author-id="394274" data-course-code="javascript-es6-orientacao-a-objetos-parte-3" data-section-name="Lapidando um pouco mais nossa aplicação" data-section-id="4271" data-section-number="4" data-domain="cursos.alura.com.br" data-hasfeedbackanswer="false" data-url-prefix="/">
+	<section class="task-body">
+		
+		<header class="task-body-header">
+			<div class="container">
+				<h1 class="task-body-header-title">
+					<svg class="task-body-header-title-svg" aria-label="Atividade de Atividade de Múltipla Escolha">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+					</svg>
+					<small>11</small>
+					<span class="task-body-header-title-text"> Experimento com promise</span>
+				</h1>
+				
+					<div class="task-body-header-actions">
+						<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19615/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit" style="display: inline-block;">Próxima Atividade</a>
+					</div>
+				
+			</div>
+		</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Meu caderno do curso (beta)</h2>
+        <p class="class-notes-description">Este é seu caderno de anotações aqui na Alura. Todo o seu conteúdo fica vísivel apenas para você. Próximos passos para essa funcionalidade  no nosso<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas salvas</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Salvar caderno" data-saving-text="Salvando">
+                   Salvar caderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+		
+
+
+
+
+
+
+
+<section class="multipleChoice" id="task-content" data-should-submit-answer="false">
+	<div class="container">
+	
+
+
+
+
+
+
+<div class="settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<span class="settings-box-title"></span>
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo noturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/javascript-es6-orientacao-a-objetos-parte-3/19615/question">Sugerir alteração</a></li>
+					
+				
+			
+			
+		</ul>
+	</div>
+</div>
+
+		
+		<div class="choiceable-title formattedText" data-external-links=""><p>Clóvis, desejando compreender melhor o efeito do encadeamento de <em>promises</em> (<em>promise chainning</em>) e o tratamento de erro, criou três funções que retornam <em>promises</em>. Ele simulou um processamento assíncrono usando <code>setTimeout</code>, ou seja, a chamada de <code>resolve</code> de cada <em>promise</em> será chamada depois de alguns segundos.  Veja que cada função tem um tempo de espera diferente da outra:</p>
+<pre class="prettyprint"><code><span class="com">&lt;!-- teste promise --&gt;</span><span class="pln">
+</span><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pun">=</span><span class="atv">"en"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pun">=</span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;title&gt;</span><span class="pln">Document</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;script&gt;</span><span class="pln">
+
+        </span><span class="kwd">function</span><span class="pln"> a</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">((</span><span class="pln">resolve</span><span class="pun">,</span><span class="pln"> reject</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                setTimeout</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        reject</span><span class="pun">(</span><span class="str">'PROMISE A FALHOU'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'PROMISE A RESOLVIDA'</span><span class="pun">);</span><span class="pln">
+                        resolve</span><span class="pun">(</span><span class="str">'DADO A'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+
+                </span><span class="pun">},</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        </span><span class="kwd">function</span><span class="pln"> b</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">((</span><span class="pln">resolve</span><span class="pun">,</span><span class="pln"> reject</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                setTimeout</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        reject</span><span class="pun">(</span><span class="str">'PROMISE B FALHOU'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'PROMISE B RESOLVIDA'</span><span class="pun">)</span><span class="pln">
+                        resolve</span><span class="pun">(</span><span class="str">'DADO B'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+
+                </span><span class="pun">},</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        </span><span class="kwd">function</span><span class="pln"> c</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">((</span><span class="pln">resolve</span><span class="pun">,</span><span class="pln"> reject</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                setTimeout</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">falhar</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        reject</span><span class="pun">(</span><span class="str">'PROMISE C FALHOU'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'PROMISE C RESOLVIDA'</span><span class="pun">)</span><span class="pln">
+                        resolve</span><span class="pun">(</span><span class="str">'DADO C'</span><span class="pun">);</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+
+                </span><span class="pun">},</span><span class="pln"> </span><span class="lit">500</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">});</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+</span><span class="tag">&lt;/body&gt;</span></code></pre><p>Clóvis, espertamente, fez com que cada função recebesse um parâmetro. Se o valor passado for <code>true</code>, a <em>promise</em> será rejeitada. Uma maneira de simular um erro durante seu processamento.</p>
+<p>Ele fez o seguinte teste:</p>
+<pre class="prettyprint"><code><span class="com">&lt;!-- teste promise --&gt;</span><span class="pln">
+</span><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pun">=</span><span class="atv">"en"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pun">=</span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;title&gt;</span><span class="pln">Document</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;script&gt;</span><span class="pln">
+
+        </span><span class="com">// código das funções omitido </span><span class="pln">
+
+        </span><span class="com">// teste, fazendo a promise c ser rejeitada</span><span class="pln">
+
+            a</span><span class="pun">()</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">then</span><span class="pun">(</span><span class="pln">dado </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">dado</span><span class="pun">);</span><span class="pln">
+                </span><span class="com">// O RETORNO DA PROMISE B ESTARÁ DISPONÍVEL NO PRÓXIMO THEN</span><span class="pln">
+                </span><span class="kwd">return</span><span class="pln"> b</span><span class="pun">();</span><span class="pln"> 
+            </span><span class="pun">})</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">then</span><span class="pun">(</span><span class="pln">dado </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">dado</span><span class="pun">);</span><span class="pln">
+
+                </span><span class="com">/* FORÇANDO A REJEIÇÃO DA PROMISE. TEM QUE IR DIRETO PARA O CATCH. 
+                SE NÃO TIVESSE REJEITADO, O RETORNO DE C ESTARIA DISPONÍVEL NO PRÓXIMO THEN */</span><span class="pln">
+                </span><span class="kwd">return</span><span class="pln"> c</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">  
+            </span><span class="pun">})</span><span class="pln">
+            </span><span class="pun">.</span><span class="pln">then</span><span class="pun">(</span><span class="pln">dado </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">dado</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">})</span><span class="pln">
+            </span><span class="pun">.</span><span class="kwd">catch</span><span class="pun">(</span><span class="pln">erro </span><span class="pun">=&gt;</span><span class="pln"> console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">erro</span><span class="pun">));</span><span class="pln">
+
+    </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+</span><span class="tag">&lt;/body&gt;</span></code></pre><p>O objetivo de Clóvis é saber se a função <code>catch</code> será chamada se a <em>promise</em> retornada por <code>c</code> for rejeitada, inclusive mostrando no console a mensagem de erro <em>* PROMISE C FALHOU **. Dessa forma, ele terá certeza que durante o encadeamento das *promises</em>, qualquer erro será capturado em um único lugar, no caso em <code>.catch</code>. </p>
+<p>Sobre o código acima,  marque as alternativas que julgar verdadeira:</p>
+</div>
+		<span class="multipleChoice-count">Selecione <span data-totalchoices="2" data-message="Você precisa selecionar mais {1} alternativa{2}" id="multipleChoice-count-number">0</span> <span id="multiple-choice-alternative-counter">alternativas</span></span>
+		
+
+
+
+
+
+<ul class="alternativeList">
+	<form>
+	
+		<li class="alternativeList-item  alternativeList-item--checked alternativeList-item--answered alternativeList-item--active" data-alternative-id="15085" data-is-exam="false" data-correct="true">
+			<div class="singleChoice-alternative-aria-feedback screenReader-only">Alternativa correta</div>
+			<input type="checkbox" class="alternativeList-item-input" name="alternative" id="15085" disabled="disabled">
+			<label for="15085">
+				<span class="alternativeList-item-span alternativeList-item-span-disabled"></span>
+				<span class="alternativeList-item-alternative" data-external-links=""><p>A <em>promise</em> C demorará mais de 1 segundo para ser chamada, apesar do valor de <code>setTimeout</code> ser meio segundo (500ms).</p>
+</span>
+				
+					
+						<svg class="alternativeList-item-checkmarkIcon">
+							<use class="alternativeList-item-checkmarkIcon-use" xlink:href="/assets/images/classPage/icon-checkmark.svg#checkmark"></use>
+						</svg>
+					
+					
+				
+			</label>
+			
+				
+					<button class="alternativeList-item-opinionButton alternativeList-item-opinionButton--visible" aria-label="Ver opinião" aria-expanded="true" aria-controls="alternative-15085">
+						<svg class="alternativeList-item-opinionIcon">
+							<use class="alternativeList-item-opinionIcon-use" xlink:href="/assets/images/classPage/icon-espiar.svg#espiar"></use>
+						</svg>
+					</button>
+				
+				<span class="alternativeList-item-alternativeOpinion" id="alternative-15085" aria-hidden="false" data-external-links=""><p>Cada <em>promise</em> só é executada depois que a anterior é resolvida. Sendo assim, por mais que a função <code>c</code> esteja com um valor de <code>setTimeout</code> de <strong>500</strong> ela só será executada depois da função <code>a</code> e <code>b</code> serem concluídas.</p>
+</span>
+			
+		</li>
+	
+		<li class="alternativeList-item  alternativeList-item--checked alternativeList-item--answered alternativeList-item--active" data-alternative-id="15086" data-is-exam="false" data-correct="true">
+			<div class="singleChoice-alternative-aria-feedback screenReader-only">Alternativa correta</div>
+			<input type="checkbox" class="alternativeList-item-input" name="alternative" id="15086" disabled="disabled">
+			<label for="15086">
+				<span class="alternativeList-item-span alternativeList-item-span-disabled"></span>
+				<span class="alternativeList-item-alternative" data-external-links=""><p>É exibida no console a mensagem "PROMISE C FALHOU".</p>
+</span>
+				
+					
+						<svg class="alternativeList-item-checkmarkIcon">
+							<use class="alternativeList-item-checkmarkIcon-use" xlink:href="/assets/images/classPage/icon-checkmark.svg#checkmark"></use>
+						</svg>
+					
+					
+				
+			</label>
+			
+				
+					<button class="alternativeList-item-opinionButton alternativeList-item-opinionButton--visible" aria-label="Ver opinião" aria-expanded="true" aria-controls="alternative-15086">
+						<svg class="alternativeList-item-opinionIcon">
+							<use class="alternativeList-item-opinionIcon-use" xlink:href="/assets/images/classPage/icon-espiar.svg#espiar"></use>
+						</svg>
+					</button>
+				
+				<span class="alternativeList-item-alternativeOpinion" id="alternative-15086" aria-hidden="false" data-external-links=""><p>Sim, porque como passamos <code>true</code> para a função <code>c</code>, ela chamará <code>reject</code>. Isso fará com que a <em>promise</em> rejeitada passe sua mensagem de erro para a função <code>.catch</code>, local centralizado para tratar qualquer erro disparado por uma das <em>promises</em> encadeadas.</p>
+</span>
+			
+		</li>
+	
+		<li class="alternativeList-item" data-alternative-id="15084" data-is-exam="false" data-correct="false">
+			<div class="singleChoice-alternative-aria-feedback screenReader-only">Alternativa correta</div>
+			<input type="checkbox" class="alternativeList-item-input" name="alternative" id="15084" disabled="disabled">
+			<label for="15084">
+				<span class="alternativeList-item-span alternativeList-item-span-disabled"></span>
+				<span class="alternativeList-item-alternative" data-external-links=""><p>Nenhuma mensagem será exibida no console.</p>
+</span>
+				
+					
+					
+						<svg class="alternativeList-item-xmarkIcon">
+							<use class="alternativeList-item-xmarkIcon-use" xlink:href="/assets/images/classPage/icon-xmark.svg#xmark"></use>
+						</svg>
+					
+				
+			</label>
+			
+				
+					<button class="alternativeList-item-opinionButton alternativeList-item-opinionButton--visible" aria-label="Ver opinião" aria-expanded="false" aria-controls="alternative-15084">
+						<svg class="alternativeList-item-opinionIcon">
+							<use class="alternativeList-item-opinionIcon-use" xlink:href="/assets/images/classPage/icon-espiar.svg#espiar"></use>
+						</svg>
+					</button>
+				
+				<span class="alternativeList-item-alternativeOpinion" id="alternative-15084" aria-hidden="true" data-external-links=""><p>Será exibida no console a mensagem <strong>PROMISE C FALHOU</strong>.</p>
+</span>
+			
+		</li>
+	
+	</form>
+</ul>
+		<section class="choiceable-opinion" style="display: block;">
+			<div class="formattedText" data-external-links="">
+				<p>Você deve estar se perguntando qual a diferença dessa estratégia para o uso de <code>Promise.all</code>, que usamos no módulo anterior. <code>Promise.all</code> resolve as <em>promises</em> em paralelo, ou seja, uma <em>promise</em> não aguarda a outra terminar para ser executada. <code>Promise.all</code> é interessante quando uma <em>promise</em> não depende do resultado da <em>promise</em> anterior. Nos casos onde há dependência, o encadeamento de <em>promises</em> é o caminho mais indicado.</p>
+<p>Faça um teste usando <code>Promise.all</code>. Você verá que as <em>promises</em> serão resolvidas fora da ordem em que foram passadas para <code>Promise.all</code>:</p>
+<pre class="prettyprint"><code><span class="typ">Promise</span><span class="pln">
+    </span><span class="pun">.</span><span class="pln">all</span><span class="pun">([</span><span class="pln">a</span><span class="pun">(),</span><span class="pln"> b</span><span class="pun">(),</span><span class="pln"> c</span><span class="pun">()])</span><span class="pln">
+    </span><span class="pun">.</span><span class="kwd">then</span><span class="pun">(</span><span class="pln">arrayComResultadoDasPromises </span><span class="pun">=&gt;</span><span class="pln"> console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">arrayComResultadoDasPromises</span><span class="pun">))</span><span class="pln">
+    </span><span class="pun">.</span><span class="kwd">catch</span><span class="pun">(</span><span class="pln">erroDeAlgumaDasPromises </span><span class="pun">=&gt;</span><span class="pln"> console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">erroDeAlgumaDasPromises</span><span class="pun">));</span></code></pre>
+			</div>
+		</section>
+		<div class="choiceable-aria-feedback screenReader-only" aria-live="polite">Parabéns, você acertou!</div>
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions" style="display: block;">
+			<div class="container">
+				
+
+
+
+
+
+<a href="https://cursos.alura.com.br/forum/curso-javascript-es6-orientacao-a-objetos-parte-3/exercicio-experimento-com-promise/19615/novo" class=" task-actions-button task-actions-button-forum" target="_blank">Discutir no Forum</a>
+
+				
+				
+				
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19615/next" class="task-actions-button task-body-actions-button task-actions-button-next" style="display: inline-block;">Próxima Atividade</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menu/Fechar menu" aria-label="Abrir menu/Fechar menu" type="button" class="openMenu-button task-body-button "></button>
+
+<aside class="task-menu" style="position: fixed; transform: translateY(-851.172px);">
+	<section class="task-menu-header">
+		<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3" title="Ir para página do curso">
+				
+					
+					
+						<img src="./encadeamento_de_promises-promise-all_files/javascript-es6-orientacao-a-objetos-parte-3.svg" alt="ícone JavaScript: Salvando dados localmente com IndexedDB" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">JavaScript: Salvando dados localmente com IndexedDB</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">57%</span>
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 57%, transparent 57%);"></span>
+				</div>
+			
+		</div>
+	</section>
+	
+	<div class="task-menu-others task-menu-notes">
+		<button class="task-menu-others-link class-notes-button" title="Abrir caderno">Abrir caderno</button>
+	</div>
+
+	<section class="task-menu-section">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>04</strong>
+				<span>de 07</span></span>
+			<h3 class="task-menu-section-title-text">
+				Lapidando um pouco mais nossa aplicação
+			</h3>
+		</div>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Atividades
+			<span>11 de 14</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20284" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Ops! Não podemos importar negociações duplicadas.">
+							Ops! Não podemos importar negociações duplicadas.
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">06min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20285" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Comparação entre objetos">
+							Comparação entre objetos
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">10min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20286" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Usando o método some">
+							Usando o método some
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20287" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Importando negociações automaticamente">
+							Importando negociações automaticamente
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">05min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20288" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Melhorando a legibilidade e manutenção do nosso código">
+							Melhorando a legibilidade e manutenção do nosso código
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20289" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Adicionando o método lista em NegociacaoService">
+							Adicionando o método lista em NegociacaoService
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/20290" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Isolando a complexidade do importaNegociacoes em NegociacaoService">
+							Isolando a complexidade do importaNegociacoes em NegociacaoService
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">06min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19531" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Múltipla Escolha concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Comparação entre objetos">
+							Comparação entre objetos
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19603" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="&quot;Some&quot;body help me!">
+							"Some"body help me!
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19604" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Promise mais elegante">
+							Promise mais elegante
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19615" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Atividade de Múltipla Escolha não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Experimento com promise">
+							Experimento com promise
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19620" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Atividade sem Resposta do Aluno não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">12</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consolidando seu conhecimento">
+							Consolidando seu conhecimento
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19786" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">13</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber mais: Igualdade de objetos">
+							Para saber mais: Igualdade de objetos
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19789" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">14</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber mais: Outro critério de igualdade">
+							Para saber mais: Outro critério de igualdade
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Aulas
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/javascript-es6-orientacao-a-objetos-parte-3/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="4268">01. Guardando negociações offline com IndexedDB</option>
+			
+				<option value="4269">02. Gerenciando nossa conexão com o pattern Factory</option>
+			
+				<option value="4276">03. Padronizando acesso aos dados com o pattern DAO</option>
+			
+				<option value="4271" selected="">04. Lapidando um pouco mais nossa aplicação</option>
+			
+				<option value="4387">05. Simplificando requisições Ajax com a Fetch API</option>
+			
+				<option value="4259">06. Tornando nosso código ainda mais compatível usando Babel</option>
+			
+				<option value="4270">07. Trabalhando com módulos do ES2015!</option>
+			
+		</select>
+	</section>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Outros Links
+		</h2>
+		<a href="https://cursos.alura.com.br/forum/curso-javascript-es6-orientacao-a-objetos-parte-3/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para o fórum do curso">Fórum</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para a página principal">Trocar Curso</a>
+
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://cursos.alura.com.br/user/thaispoentes" title="Ir para sua página de usuário">
+			<img src="./encadeamento_de_promises-promise-all_files/229c7e6df985bea0fcefaee1e79e0ebd.png" alt="Gravatar de Thais Poentes" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Thais Poentes</span>
+					<span class="task-menu-footer-detalhes-xp">
+						42.4k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-footer-logo">
+			<img src="./encadeamento_de_promises-promise-all_files/icon-menu-alura.svg" alt="Logo da Alura" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para a página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://cursos.alura.com.br/course/javascript-es6-orientacao-a-objetos-parte-3/task/19615" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+	
+		<!-- Hotjar Tracking Code for https://cursos.alura.com.br -->
+		<script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:1638253,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+		</script>
+	
+
+	<script src="./encadeamento_de_promises-promise-all_files/jquery-2.1.3.min.32015dd4.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/buttonToggle.js.download" async=""></script>
+	<script src="./encadeamento_de_promises-promise-all_files/sectionMenu.9c6d35d8.js.download" async=""></script>
+
+	<script src="./encadeamento_de_promises-promise-all_files/marked.min.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/markdownEditor.07eebbca.js.download" async=""></script>
+	<script src="./encadeamento_de_promises-promise-all_files/caret.js.download" async=""></script>
+	<script src="./encadeamento_de_promises-promise-all_files/keydownWatchers.f20680cd.js.download" async=""></script>
+	<script src="./encadeamento_de_promises-promise-all_files/prettify.min.49a10a85.js.download" async=""></script>
+
+	<script src="./encadeamento_de_promises-promise-all_files/preventsMultipleInteractions.ccefe158.js.download" async=""></script>
+	<script src="./encadeamento_de_promises-promise-all_files/assessment.050f656f.js.download" async=""></script>
+
+	<script src="./encadeamento_de_promises-promise-all_files/menuSettings.586ae39e.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/aria.1c51db86.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/ProjectSubmit.1da29f73.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/classPage.8b2d2097.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/phrase.dda08bd7.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/feedback.98f71e18.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/ExtraContentProgressRequest.8fae0e05.js.download"></script>
+	
+	
+
+	
+	
+		<script src="./encadeamento_de_promises-promise-all_files/multipleChoice.9f9be757.js.download"></script>
+		<script src="./encadeamento_de_promises-promise-all_files/MultipleChoiceVerifier.d478d923.js.download"></script>
+	
+	
+	
+
+	<script src="./encadeamento_de_promises-promise-all_files/partitura.c5cff29c.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/audioProgress.71d14880.js.download"></script>
+	<script src="./encadeamento_de_promises-promise-all_files/audioPlayer.9e2e5334.js.download"></script>
+
+		
+
+	
+
+	<script src="./encadeamento_de_promises-promise-all_files/darkMode.65d4b699.js.download">
+	</script>
+
+	
+		
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42101548-1', 'alura.com.br');
+
+    
+        ga('set', 'userId', '394274');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+	<script src="./encadeamento_de_promises-promise-all_files/ClassNotes.1b143ac5.js.download">
+	</script>
+<script>
+	new ClassNotes().refreshListeners();
+</script>
+
+
+
+
+
+
+<script src="./encadeamento_de_promises-promise-all_files/MarkdownProcessing.f83261d2.js.download"></script>
+<script>
+	new MarkdownProcessing("https://cursos.alura.com.br").onLoad();
+</script><script type="text/javascript" id="">function eventClick(d,a,b,c){a.includes(" \x3e ")&&(a=document.querySelector(a).textContent);b.includes(" \x3e ")&&(b=document.querySelector(b).textContent);(c=document.querySelector(c))&&c.addEventListener("click",function(){dataLayer.push({event:"gaEvent",eventCategory:d,eventAction:a,eventLabel:b})})}eventClick("Menu","Logo","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e a");eventClick("Menu","Todos os Cursos","Abrir","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e div");
+eventClick("Menu","Todos os Cursos","Cursos de Mobile","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--mobile \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Programa\u00e7\u00e3o","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--programacao \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Front-end","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--front-end \x3e a");
+eventClick("Menu","Todos os Cursos","Cursos de Infraestrutura","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--infraestrutura \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Design \x26 UX","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--design-ux \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Business","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--business \x3e a");
+eventClick("Menu","Carreiras e Forma\u00e7\u00f5es","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(2)");eventClick("Menu","Como funciona","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(3)");eventClick("Menu","Para empresas","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(4)");
+eventClick("Menu","Entrar","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a:nth-child(1)");eventClick("Menu","Matricule-se","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a.header__nav__link.header__nav__link--cta");eventClick("Menu","Busca","Abrir","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(2) \x3e a");
+eventClick("Menu","Busca","Buscar","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(1) \x3e form \x3e button");eventClick("Footer","Primeira Se\u00e7\u00e3o","Alura","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-logos-home");eventClick("Footer","Primeira Se\u00e7\u00e3o","Caelum","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-link-caelum");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Apostilas","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(1) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Planos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(2) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Todos os Cursos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(3) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Carreiras","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(4) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Instrutores","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(5) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Como virar Instrutor","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(6) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Ranking","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(7) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Blog da Alura","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(8) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Podcast Nerdtech","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(9) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Pol\u00edtica de Privacidade","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(10) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Termos de Uso","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(11) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Sobre N\u00f3s","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(12) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Perguntas Frequentes","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(13) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Youtube","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Facebook","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Twitter","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(3)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Hipsters","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(4)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Google Play","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","App Store","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Fale Conosco","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-contato");eventClick("Footer","Primeira Se\u00e7\u00e3o","Empresa?","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-empresa");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(2)","body \x3e nav \x3e div \x3e a:nth-child(2)");
+eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(3)","body \x3e nav \x3e div \x3e a:nth-child(3)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(4)","body \x3e nav \x3e div \x3e a:nth-child(4)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(5)","body \x3e nav \x3e div \x3e a:nth-child(5)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(6)","body \x3e nav \x3e div \x3e a:nth-child(6)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(8)","body \x3e nav \x3e div \x3e a:nth-child(8)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(9)","body \x3e nav \x3e div \x3e a:nth-child(9)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(10)","body \x3e nav \x3e div \x3e a:nth-child(10)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(11)","body \x3e nav \x3e div \x3e a:nth-child(11)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(12)","body \x3e nav \x3e div \x3e a:nth-child(12)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(14)","body \x3e nav \x3e div \x3e a:nth-child(14)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(15)","body \x3e nav \x3e div \x3e a:nth-child(15)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(16)","body \x3e nav \x3e div \x3e a:nth-child(16)");
+eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(17)","body \x3e nav \x3e div \x3e a:nth-child(17)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(18)","body \x3e nav \x3e div \x3e a:nth-child(18)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(20)","body \x3e nav \x3e div \x3e a:nth-child(20)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(21)","body \x3e nav \x3e div \x3e a:nth-child(21)");
+eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(22)","body \x3e nav \x3e div \x3e a:nth-child(22)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(23)","body \x3e nav \x3e div \x3e a:nth-child(23)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(24)","body \x3e nav \x3e div \x3e a:nth-child(24)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(26)","body \x3e nav \x3e div \x3e a:nth-child(26)");
+eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(27)","body \x3e nav \x3e div \x3e a:nth-child(27)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(28)","body \x3e nav \x3e div \x3e a:nth-child(28)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(29)","body \x3e nav \x3e div \x3e a:nth-child(29)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(30)","body \x3e nav \x3e div \x3e a:nth-child(30)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(32)","body \x3e nav \x3e div \x3e a:nth-child(32)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(33)","body \x3e nav \x3e div \x3e a:nth-child(33)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(34)","body \x3e nav \x3e div \x3e a:nth-child(34)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(35)","body \x3e nav \x3e div \x3e a:nth-child(35)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(36)","body \x3e nav \x3e div \x3e a:nth-child(36)");</script><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script><span style="z-index: 2147483647;"></span><iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./encadeamento_de_promises-promise-all_files/box-469cf41adb11dc78be68c1ae7f9457a4.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe></body></html>
