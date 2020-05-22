@@ -26,6 +26,11 @@ class NegociacaoController {
 
         this._ordemAtual = '';
 
+        this._init();
+    }
+
+    _init(){
+        
         ConnectionFactory
             .getConnection()
             .then(connection => {
@@ -37,6 +42,11 @@ class NegociacaoController {
                         });
                     });
             }).catch(error => this._mensagem.texto = error);
+
+            //executa uma funcao de tempos em tempos - segundo parametros eh em milisegundos
+            setInterval(() => {
+                this.importarNegociacoes()
+            }, 5000);
     }
 
     adicionar(event) {
@@ -78,11 +88,13 @@ class NegociacaoController {
             .then(negociacoes =>
                 //verifica se nao existe para retornar e adicionar na lista
                 //O metodo filter() cria um novo array com todos os elementos que passaram no teste implementado pela funcao fornecida.
+                //se o valor retornado for true, o item será incluido
                 negociacoes.filter(negociacao =>
                     !this._listaNegociacoes.negociacoes
                         //converte o obj em string para comparacao
                         .some(negociacaoExistente => JSON.stringify(negociacao) == JSON.stringify(negociacaoExistente)))
             )
+            //esse proximo then so conterah as negociacoes inexistentes dentro da listaNegociacoes.negociacoes
             .then(negociacoes => {
 
                 negociacoes.forEach(negociacao => {
