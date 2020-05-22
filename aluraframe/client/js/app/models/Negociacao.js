@@ -15,6 +15,7 @@ class Negociacao {
     }
 
     isEquals(outraNegociacao){
+        // usando JSON.stringifly para converter objeto em uma string no formato JSON.
         return JSON.stringify(this) == JSON.stringify(outraNegociacao);
     }
 
