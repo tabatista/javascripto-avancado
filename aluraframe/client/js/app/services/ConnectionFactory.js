@@ -1,7 +1,7 @@
 /*Module Pattern*/
 //modulo eh uma unidade de codigo confinada que ninguem tem acesso ao que tem dentro dela
 //fazemos isso transformando a classe em uma funcao anonima em que se autoexecutada confinada com ()
-//onde a classe se torna
+//onde a classe se retorna
 
 var ConnectionFactory = (function () {
     const stores = ['negociacoes'];

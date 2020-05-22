@@ -14,6 +14,10 @@ class Negociacao {
         //shallow - raso - congela "apenas" o objeto - sem deep freeze
     }
 
+    isEquals(outraNegociacao){
+        return JSON.stringify(this) == JSON.stringify(outraNegociacao);
+    }
+
     //comportamento
     get volume() {
         return this._quantidade * this._valor;

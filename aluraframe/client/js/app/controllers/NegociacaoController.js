@@ -12,6 +12,7 @@ class NegociacaoController {
         this._inputValor = $('#valor');
 
         this._formulario = $('.form');
+        this._service = new NegociacaoService();
 
         /*
         //o escopo do this de uma arrow function eh lexico
@@ -29,92 +30,64 @@ class NegociacaoController {
         this._init();
     }
 
-    _init(){
-        
-        ConnectionFactory
-            .getConnection()
-            .then(connection => {
-                new NegociacaoDAO(connection)
-                    .listarTodos()
-                    .then(negociacoes => {
-                        negociacoes.forEach(negociacao => {
-                            this._listaNegociacoes.adicionar(negociacao);
-                        });
-                    });
+    _init() {
+
+        this._service
+            .listar()
+            .then(negociacoes => {
+                negociacoes.forEach(negociacao => {
+                    this._listaNegociacoes.adicionar(negociacao);
+                });
             }).catch(error => this._mensagem.texto = error);
 
-            //executa uma funcao de tempos em tempos - segundo parametros eh em milisegundos
-            setInterval(() => {
-                this.importarNegociacoes()
-            }, 5000);
+        //executa uma funcao de tempos em tempos - segundo parametros eh em milisegundos
+        setInterval(() => {
+            this.importarNegociacoes()
+        }, 5000);
     }
 
     adicionar(event) {
         event.preventDefault();
+        let negociacao;
+        try {
+            negociacao = this._criarNegociacao();
+        } catch (e) {
+            this._mensagem.texto = e;
+            throw new Error(e);
+        }
 
-        let negociacao = this._criarNegociacao();
-
-        ConnectionFactory
-            .getConnection()
-            .then(connection => {
-                new NegociacaoDAO(connection)
-                    .adicionar(negociacao)
-                    .then(() => {
-                        this._listaNegociacoes.adicionar(negociacao);
-                        this._mensagem.texto = 'Negociação adicionada com sucesso!';
-                        this._limpaFormulario();
-                    });
-            }).catch(error => this._mensagem.texto = error);
+        this._service.
+            cadastrar(negociacao)
+            .then(mensagem => {
+                this._listaNegociacoes.adicionar(negociacao);
+                this._mensagem.texto = mensagem;
+                this._limpaFormulario();
+            })
+            .catch(error => this._mensagem.texto = error);
     }
 
     importarNegociacoes() {
-
-        /*
-        Todo array possui a funcao some(), com ela identificamos se o item buscado faz parte da lista
-        varrendo cada um deles de forma semelhante a um forEach()
-
-        A funcao some() vai varrer cada item da lista verificando se os elementos sao iguais ao criterio estabelecido.
-        Enquanto o item for diferente, ele seguirag para o proximo. Quando o elemento for equivalente ao criterio b
-        letras (array) retornarah true e não seguirah iterando no array ate o fim. 
-        Basta encontrar um item que seja correspondente ao criterio para que o retorno de some() seja "verdadeiro".
-
-        No entanto, quando buscamos uma letra que nao existe, por exemplo, a letra e, o retorno serah "falso".
-        */
-
-        let service = new NegociacaoService();
-        let negociacoesPromise = service.obterNegociacoes();
-
-        negociacoesPromise
-            .then(negociacoes =>
-                //verifica se nao existe para retornar e adicionar na lista
-                //O metodo filter() cria um novo array com todos os elementos que passaram no teste implementado pela funcao fornecida.
-                //se o valor retornado for true, o item será incluido
-                negociacoes.filter(negociacao =>
-                    !this._listaNegociacoes.negociacoes
-                        //converte o obj em string para comparacao
-                        .some(negociacaoExistente => JSON.stringify(negociacao) == JSON.stringify(negociacaoExistente)))
-            )
-            //esse proximo then so conterah as negociacoes inexistentes dentro da listaNegociacoes.negociacoes
+        this._service
+            .importar(this._listaNegociacoes.negociacoes)
             .then(negociacoes => {
-
                 negociacoes.forEach(negociacao => {
                     this._listaNegociacoes.adicionar(negociacao);
                 });
+                this._mensagem.texto = 'Negociacoes do periodo importadas';
             })
-            .catch(error => this._mensagem.texto = erro);
+            .catch(error => this._mensagem.texto = error);
     }
 
     apagar() {
 
-        ConnectionFactory
-            .getConnection()
-            .then(connection => new NegociacaoDAO(connection))
-            .then(dao => dao.apagarTodos())
-            .then(mensagem => {
-                this._mensagem.texto = mensagem;
+        this._service
+            .apagar()
+            .then(msg => {
+                this._mensagem.texto = msg;
                 this._listaNegociacoes.esvaziar();
             })
             .catch(error => this._mensagem.texto = error);
+
     }
 
     _criarNegociacao() {
