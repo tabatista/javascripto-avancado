@@ -1,4 +1,6 @@
-class MensagemView extends View {
+import { View } from "./View";;
+
+export class MensagemView extends View {
 
     //nao precisa, apenas para o uso de super da classe pai
     constructor(elemento) {

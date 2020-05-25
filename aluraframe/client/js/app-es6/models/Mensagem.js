@@ -1,4 +1,4 @@
-class Mensagem {
+export class Mensagem {
 
     constructor(texto = '') { //valor padrao do parametro para construtores/metodos
         this._texto = texto;

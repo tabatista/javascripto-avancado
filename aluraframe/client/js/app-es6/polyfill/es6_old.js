@@ -3,6 +3,8 @@ Quando adicionamos metodos no prototype de uma classe ou funcao construtora,
 todas as instancias dessa funcao construtora ou classe terao o metodo.
 */
 
+//nao precisa mais pela existencia do babel
+/*
 if (!Array.prototype.includes) {
 
     // Se não existir, adiciona
@@ -13,4 +15,5 @@ if (!Array.prototype.includes) {
         return this.indexOf(elemento) != -1;
     };
 }
+*/
 

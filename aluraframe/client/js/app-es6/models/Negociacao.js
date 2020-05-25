@@ -1,6 +1,6 @@
 //ecmascript 6
 
-class Negociacao {
+export class Negociacao {
 
     //define os atributos/propriedades
     constructor(data, quantidade, valor) {

@@ -1,5 +1,5 @@
 //suposta classe abstrata
-class View {
+export class View {
 
     constructor(elemento) {
         this._elemento = elemento;

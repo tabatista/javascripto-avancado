@@ -1,4 +1,4 @@
-class DataHelper {
+export class DataHelper {
 
     constructor() {
         throw new Error('DataHelper nao pode ser instanciada');

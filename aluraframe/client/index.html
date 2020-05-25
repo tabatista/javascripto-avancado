@@ -6,10 +6,6 @@
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-
-    <!-- carregando nosso polyfill -->
-    <script src="js/app/polyfill/es6.js"></script>
-
 </head>
 
 <body class="container">
@@ -18,7 +14,7 @@
 
     <div id="mensagemView"></div>
 
-    <form class="form" onsubmit="negociacaoController.adicionar(event)">
+    <form class="form">
 
         <div class="form-group">
             <label for="data">Data</label>
@@ -40,7 +36,7 @@
     </form>
 
     <div class="text-center">
-         <button onclick="negociacaoController.apagar()" class="btn btn-primary text-center" type="button">
+        <button class="btn btn-primary text-center" type="button">
             Apagar
         </button>
     </div>
@@ -49,23 +45,17 @@
 
     <div id="negociacoesView"></div>
 
-    <!-- prestar atencao nas dependencias de js para ordem de importacao -->
-    <script src="js/app/polyfill/fetch.js"></script>
-    <script src="js/app/models/Negociacao.js"></script>
-    <script src="js/app/helpers/DataHelper.js"></script>
-    <script src="js/app/views/View.js"></script>
-    <script src="js/app/views/NegociacoesView.js"></script>
-    <script src="js/app/views/MensagemView.js"></script>
-    <script src="js/app/models/ListaNegociacoes.js"></script>
-    <script src="js/app/models/Mensagem.js"></script>
-    <script src="js/app/services/ProxyFactory.js"></script>
-    <script src="js/app/services/HttpService.js"></script>
-    <script src="js/app/services/NegociacaoService.js"></script>
-    <script src="js/app/services/ConnectionFactory.js"></script>
-    <script src="js/app/dao/NegociacaoDAO.js"></script>
-    <script src="js/app/controllers/NegociacaoController.js"></script>
-    <script src="js/app/helpers/Bind.js"></script>
+    <!-- loader que carregarah todos os scripts da pagina, sem se preocupar com a ordem de carregamento de dependencias -->
+    <script src="node_modules/systemjs/dist/system.js"></script>
 
+    <!-- configuracao para habilitar o primeiro modulo a ser carregado pelo systemjs-->
+    <script>
+        System.defaultJSExtensions = true; //permite omitir a extensao .js dos imports
+        System.import('js/app/boot').catch(function (err) {
+            console.error(err);
+        })
+    </script>
+<!--
     <script>
         //o let existe dentro do escopo de bloco {} - dentro de um for, por exemplo - como acontece no java
         //o var nao... 
@@ -73,9 +63,6 @@
         let volume = n1.volume; //acessa o metodo get sem o () - ele interpreta implicitamente 
         console.log(volume);
         console.log(Object.isFrozen(n1));
-
-        //-----------------------
-        var negociacaoController = new NegociacaoController();
     </script>
 
     <script>
@@ -111,8 +98,8 @@
 
         lista.adicionar(new Negociacao(new Date(), 1, 100));
         lista.esvaziar();
-
     </script>
+    -->
 </body>
 
 </html>
