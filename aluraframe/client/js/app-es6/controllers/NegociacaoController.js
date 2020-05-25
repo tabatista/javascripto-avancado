@@ -7,7 +7,7 @@ import { DataHelper } from '../helpers/DataHelper';
 import { Bind } from '../helpers/Bind';
 import { Negociacao } from '../models/Negociacao';
 
-export class NegociacaoController {
+class NegociacaoController {
 
     //melhora a perfomance para nao buscar varias vezes no dom os inputs
     constructor() {
@@ -121,4 +121,10 @@ export class NegociacaoController {
 
         this._ordemAtual = coluna;
     }
+}
+
+//singleton - unica instancia do modulo... removido o export
+let negociacaoController = new NegociacaoController();
+export function currentInstance() {
+    return negociacaoController;
 }

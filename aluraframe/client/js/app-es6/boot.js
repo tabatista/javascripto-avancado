@@ -1,7 +1,7 @@
-import { NegociacaoController } from './controllers/NegociacaoController';
+import { currentInstance } from './controllers/NegociacaoController';
 import {} from './polyfill/fetch';
 
-let negociacaoController = new NegociacaoController();
+let negociacaoController = currentInstance();
 
 //bind para nao perder a associacao do this
 document.querySelector('.form').onsubmit = negociacaoController.adicionar.bind(negociacaoController);

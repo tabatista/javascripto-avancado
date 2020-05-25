@@ -1,10 +1,20 @@
 import { View } from './View';
 import { DataHelper } from '../helpers/DataHelper';
+import { currentInstance } from '../controllers/NegociacaoController';
 
 export class NegociacoesView extends View {
 
     constructor(elemento) {
         super(elemento);
+        
+        //event bubbling
+        elemento.addEventListener('click', function(event){
+            //event.target = o cara que disparou o evento, se for uma th...
+            if(event.target.nodeName == 'TH'){
+                //recuperando o texto dentro da th para ordenar
+                currentInstance().ordenar(event.target.textContent.toLowerCase());
+            }
+        });
     }
 
     template(model) {
@@ -13,10 +23,10 @@ export class NegociacoesView extends View {
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th onclick="negociacaoController.ordenar('data')">DATA</th>
-                <th onclick="negociacaoController.ordenar('quantidade')">QUANTIDADE</th>
-                <th onclick="negociacaoController.ordenar('valor')">VALOR</th>
-                <th onclick="negociacaoController.ordenar('volume')">VOLUME</th>
+                <th>DATA</th>
+                <th>QUANTIDADE</th>
+                <th>VALOR</th>
+                <th>VOLUME</th>
             </tr>
         </thead>
 
@@ -43,7 +53,7 @@ export class NegociacoesView extends View {
     }
 
     /*
-     * Forma de percorrer o totlal acima com uma funcao autoretornavel
+     * Forma de percorrer o total acima com uma funcao autoretornavel
 
           (function(){
              let total = 0;
