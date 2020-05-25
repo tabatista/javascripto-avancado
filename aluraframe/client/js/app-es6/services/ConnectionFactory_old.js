@@ -3,6 +3,7 @@
 //fazemos isso transformando a classe em uma funcao anonima em que se autoexecutada confinada com ()
 //onde a classe se retorna
 
+/*
 var ConnectionFactory = (function () {
     const stores = ['negociacoes'];
     const version = 2;
@@ -69,3 +70,4 @@ var ConnectionFactory = (function () {
         }
     }
 })();
+*/

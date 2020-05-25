@@ -7,7 +7,7 @@ import { DataHelper } from '../helpers/DataHelper';
 import { Bind } from '../helpers/Bind';
 import { Negociacao } from '../models/Negociacao';
 
-class NegociacaoController {
+export class NegociacaoController {
 
     //melhora a perfomance para nao buscar varias vezes no dom os inputs
     constructor() {

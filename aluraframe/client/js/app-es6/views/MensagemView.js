@@ -1,4 +1,4 @@
-import { View } from "./View";;
+import { View } from './View';
 
 export class MensagemView extends View {
 
@@ -7,7 +7,7 @@ export class MensagemView extends View {
         super(elemento);
     }
 
-    template(model){
+    template(model) {
         //if ternario para verificar se o texto esta vazio/nulo
         return model.texto ? `<p class="alert alert-info">${model.texto}</p>` : `<p></p>`;
     }

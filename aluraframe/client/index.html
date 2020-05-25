@@ -51,9 +51,9 @@
     <!-- configuracao para habilitar o primeiro modulo a ser carregado pelo systemjs-->
     <script>
         System.defaultJSExtensions = true; //permite omitir a extensao .js dos imports
-        System.import('js/app/boot').catch(function (err) {
+        System.import('js/app/boot').catch(function(err){
             console.error(err);
-        })
+        });
     </script>
 <!--
     <script>

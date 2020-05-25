@@ -1,4 +1,5 @@
-import {View} from './View';
+import { View } from './View';
+import { DataHelper } from '../helpers/DataHelper';
 
 export class NegociacoesView extends View {
 
